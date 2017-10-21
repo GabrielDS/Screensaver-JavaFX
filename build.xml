@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Farmacia" default="run" basedir=".">
+
+  <!-- Delete the folders -->
+  <target name="cleanup">
+    <delete dir="bin" />
+  </target>
+
+  <!-- Create the folders -->
+  <target name="create" depends="cleanup" >
+    <mkdir dir="bin" />
+    <mkdir dir="src" />
+    <mkdir dir="src/model" />
+    <mkdir dir="src/view" />
+    <mkdir dir="src/controller" />
+  </target>
+
+  <!-- Move to respective folder -->
+  <target name="copy" depends="create">
+
+    <copy overwrite="true" todir="src/model">
+      <fileset dir="src/model" includes="*.java" />
+    </copy>
+
+    <copy overwrite="true" todir="src/view">
+      <fileset dir="src/view" includes="*.fxml" />
+    </copy>
+
+    <copy overwrite="true" todir="src/controller">
+      <fileset dir="src/controller" includes="*.java" />
+    </copy>
+
+  </target>
+
+  <!-- ClassPath -->
+  <path id="classpath" >
+
+    <path location="src/view">
+      <fileset dir="src/view" includes="*.fxml" />
+    </path>
+
+    <path location="src/controller">
+      <fileset dir="src/controller" includes="*.java" />
+    </path>
+
+    <path location="bin"/>
+  </path>
+
+  <!-- Compile  -->
+  <target name="compile" depends="copy">
+    <javac classpathref="classpath" includeantruntime="true" srcdir="src/model;src/controller" destdir="bin" description="Compile Java Files" includes="*.java" />
+  </target>
+
+  <!-- Execute -->
+  <target name="run" depends="compile" >
+    <java classpathref="classpath" classname="Main" fork="true" />
+  </target>
+
+</project>
