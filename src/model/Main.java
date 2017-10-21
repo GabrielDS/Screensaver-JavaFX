@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import java.io.IOException;
 import javafx.stage.StageStyle;
+import javafx.scene.input.KeyCombination;
 
 public class Main extends Application
 {
@@ -16,9 +17,11 @@ public class Main extends Application
 	{
 		stage.setScene( createScene( loadWindow() ) );
 
-		// stage.initStyle(StageStyle.UNDECORATED);
+		stage.initStyle(StageStyle.UNDECORATED);
 
 		stage.setFullScreen( true );
+
+		stage.setFullScreenExitKeyCombination( KeyCombination.NO_MATCH );
 
 		stage.setResizable( false );
 
