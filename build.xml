@@ -11,6 +11,7 @@
   <target name="create" depends="cleanup" >
     <mkdir dir="bin" />
     <mkdir dir="src" />
+    <mkdir dir="contents" />
     <mkdir dir="src/model" />
     <mkdir dir="src/view" />
     <mkdir dir="src/controller" />
@@ -31,6 +32,10 @@
       <fileset dir="src/controller" includes="*.java" />
     </copy>
 
+    <copy overwrite="true" todir="contents">
+      <fileset dir="contents" includes="*.jpg" />
+    </copy>
+
   </target>
 
   <!-- ClassPath -->
@@ -42,6 +47,10 @@
 
     <path location="src/controller">
       <fileset dir="src/controller" includes="*.java" />
+    </path>
+
+    <path location="contents">
+      <fileset dir="contents" includes="*.jpg" />
     </path>
 
     <path location="bin"/>
@@ -58,13 +67,16 @@
   </target>
 
   <!-- Compile To Jar -->
-  <target name="jar">
-        <mkdir dir="build/jar"/>
-        <jar destfile="build/jar/Clock.jar" basedir="bin">
-            <manifest>
-                <attribute name="Main-Class" value="Main"/>
-            </manifest>
-        </jar>
+  <target name="jar" depends="compile">
+      <mkdir dir="build/jar"/>
+      <jar destfile="build/jar/ClockScreenSaver.jar" basedir="bin">
+
+        <fileset dir="contents" includes="*.jpg"/>
+        <fileset dir="src\view" includes="*.fxml"/>
+        <manifest>
+            <attribute name="Main-Class" value="Main"/>
+        </manifest>
+      </jar>
   </target>
 
 </project>
