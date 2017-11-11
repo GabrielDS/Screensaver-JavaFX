@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.53" prefHeight="800.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="ScreenClockController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ScreenClockController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
@@ -16,19 +20,43 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#3dc3e5, #3ce569);" />
-      <Text fx:id="time" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="03:40" GridPane.halignment="CENTER">
+      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="img" fitHeight="869.0" fitWidth="1295.0" layoutX="-10.0" pickOnBounds="true" preserveRatio="true" />
+         </children></Pane>
+      <Text fx:id="time" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="03:40" GridPane.halignment="CENTER">
          <font>
             <Font name="Lao UI" size="340.0" />
          </font>
+         <effect>
+            <Glow level="0.0" />
+         </effect>
+         <fill>
+            <LinearGradient endX="1.0" endY="0.8142857142857143" startY="1.0">
+               <stops>
+                  <Stop color="#cdcdcd" />
+                  <Stop color="#cdcdcd" offset="0.007662835249042145" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
       </Text>
-      <Text fx:id="period" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PM" GridPane.valignment="TOP">
+      <Text fx:id="period" opacity="0.79" strokeType="OUTSIDE" strokeWidth="0.0" text="PM" GridPane.valignment="TOP">
          <font>
             <Font size="71.0" />
          </font>
          <GridPane.margin>
             <Insets left="158.0" top="100.0" />
          </GridPane.margin>
+         <fill>
+            <LinearGradient endX="0.38095238095238093" endY="1.0" startX="0.34285714285714286" startY="1.0">
+               <stops>
+                  <Stop color="#cdcdcd" />
+                  <Stop color="#cdcdcd" offset="0.007662835249042145" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
       </Text>
    </children>
 </GridPane>
